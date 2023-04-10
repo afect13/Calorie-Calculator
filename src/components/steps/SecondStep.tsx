@@ -1,5 +1,5 @@
 const SecondStep = () => {
-  return <div>SecondStep</div>;
+  return <div></div>;
 };
 
 export default SecondStep;

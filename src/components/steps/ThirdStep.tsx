@@ -1,5 +1,5 @@
 const ThirdStep = () => {
-  return <div>start</div>;
+  return <div></div>;
 };
 
 export default ThirdStep;

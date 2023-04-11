@@ -1,5 +1,59 @@
-const ThirdStep = () => {
-  return <div></div>;
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+
+type ThirdStepProps = {
+  value: { age: string; growth: string; weight: string };
+  changeParameters: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+  toggleSteps: (stepNum: string) => void;
+};
+
+const ThirdStep = ({ value, toggleSteps, changeParameters }: ThirdStepProps): JSX.Element => {
+  return (
+    <div className="flex flex-col mx-auto w-[350px] min-h-screen justify-between">
+      <div>
+        <h1 className="text-2xl my-12">Внесите свои данные:</h1>
+        <form className="flex flex-col justify-between items-center mb-12">
+          <TextField
+            onChange={changeParameters}
+            label="Ваш возраст"
+            type="number"
+            id="age"
+            sx={{ m: 1, width: "100%" }}
+          />
+          <TextField
+            onChange={changeParameters}
+            label="Ваш рост"
+            type="number"
+            id="growth"
+            sx={{ m: 1, width: "100%" }}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">см</InputAdornment>,
+            }}
+          />
+          <TextField
+            onChange={changeParameters}
+            label="Ваш вес"
+            type="number"
+            id="weight"
+            sx={{ m: 1, width: "100%" }}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">кг</InputAdornment>,
+            }}
+          />
+        </form>
+      </div>
+      {value.age.length > 0 && value.weight.length > 0 && value.growth.length > 0 ? (
+        <Button onClick={() => toggleSteps("third")} sx={{ marginBottom: "60px" }} variant="contained">
+          Продолжить
+        </Button>
+      ) : (
+        <Button disabled sx={{ marginBottom: "60px" }} variant="contained">
+          Продолжить
+        </Button>
+      )}
+    </div>
+  );
 };
 
 export default ThirdStep;

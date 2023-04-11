@@ -2,23 +2,24 @@ import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
 import Button from "@mui/material/Button";
 
-type IFirstStep = {
+type FirstStepProps = {
   value: string;
   changeGender: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  toggleSteps: (stepNum: string) => void;
 };
 
-const FirstStep = ({ value, changeGender }: IFirstStep): JSX.Element => {
+const FirstStep = ({ value, changeGender, toggleSteps }: FirstStepProps): JSX.Element => {
   return (
-    <div className="flex flex-col mx-auto w-[350px] h-full justify-between">
+    <div className="flex flex-col mx-auto w-[350px] min-h-screen justify-between">
       <div>
         <h1 className="text-2xl my-12">Калькулятор нормы калорий</h1>
         <h2 className=" text-xl mb-12">Выберите ваш пол:</h2>
         <div onChange={changeGender} className="flex justify-between  mb-12">
           <label
-            htmlFor="male"
+            htmlFor="gender"
             className={
               "flex flex-col justify-center w-[170px] relative items-center text-center text-blue-500" +
-              (value === "male" ? " border rounded-lg border-blue-500" : "")
+              (value === "male" ? " border-2 rounded-lg border-blue-500" : "")
             }
           >
             <span>Мужской</span>
@@ -31,10 +32,10 @@ const FirstStep = ({ value, changeGender }: IFirstStep): JSX.Element => {
             />
           </label>
           <label
-            htmlFor="female"
+            htmlFor="gender"
             className={
               "flex flex-col justify-center w-[170px] relative items-center text-center text-pink-500" +
-              (value === "female" ? " border rounded-lg border-pink-500" : "")
+              (value === "female" ? " border-2 rounded-lg border-pink-500" : "")
             }
           >
             <span>Женский</span>
@@ -48,7 +49,7 @@ const FirstStep = ({ value, changeGender }: IFirstStep): JSX.Element => {
           </label>
         </div>
       </div>
-      <Button sx={{ marginBottom: "60px" }} variant="contained">
+      <Button onClick={() => toggleSteps("first")} sx={{ marginBottom: "60px" }} variant="contained">
         Продолжить
       </Button>
     </div>

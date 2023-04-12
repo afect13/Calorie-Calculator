@@ -1,12 +1,14 @@
-import FirstStep from "./components/steps/FirstStep";
 import { useState } from "react";
-import SecondStep from "./components/steps/SecondStep";
-import ThirdStep from "./components/steps/ThirdStep";
+import FirstStep from "./components/Steps/FirstStep";
+import SecondStep from "./components/Steps/SecondStep";
+import ThirdStep from "./components/Steps/ThirdStep";
+import Result from "./components/Result/Result";
 
 type IInitialSteps = {
   first: boolean;
   second: boolean;
   third: boolean;
+  result: boolean;
 };
 
 type IInitialParameters = {
@@ -20,6 +22,7 @@ const App = (): JSX.Element => {
     first: true,
     second: false,
     third: false,
+    result: false,
   };
   const initialParameters: IInitialParameters = {
     age: "",
@@ -57,7 +60,10 @@ const App = (): JSX.Element => {
       setStep((prevState: IInitialSteps) => ({ ...prevState, second: false, third: true }));
     }
     if (stepNum === "third") {
-      setStep((prevState: IInitialSteps) => ({ ...prevState, third: false, first: true }));
+      setStep((prevState: IInitialSteps) => ({ ...prevState, third: false, result: true }));
+    }
+    if (stepNum === "result") {
+      setStep((prevState: IInitialSteps) => ({ ...prevState, result: false, first: true }));
     }
   };
   return (
@@ -70,6 +76,9 @@ const App = (): JSX.Element => {
       )}
       {step.third === true && (
         <ThirdStep value={parameters} changeParameters={handleChangeInput} toggleSteps={handleToggleSteps} />
+      )}
+      {step.result === true && (
+        <Result gender={gender} activity={activity} parameters={parameters} toggleSteps={handleToggleSteps} />
       )}
     </div>
   );

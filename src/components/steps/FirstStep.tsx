@@ -12,7 +12,7 @@ const FirstStep = ({ value, changeGender, toggleSteps }: FirstStepProps): JSX.El
   return (
     <div className="flex flex-col mx-auto w-[350px] min-h-screen justify-between">
       <div>
-        <h1 className="text-2xl my-12">Калькулятор нормы калорий</h1>
+        <h1 className="text-2xl my-12 text-center uppercase">Калькулятор калорий</h1>
         <h2 className=" text-xl mb-12">Выберите ваш пол:</h2>
         <div onChange={changeGender} className="flex justify-between  mb-12">
           <label

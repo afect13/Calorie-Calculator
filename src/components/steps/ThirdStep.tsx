@@ -12,9 +12,10 @@ const ThirdStep = ({ value, toggleSteps, changeParameters }: ThirdStepProps): JS
   return (
     <div className="flex flex-col mx-auto w-[350px] min-h-screen justify-between">
       <div>
-        <h1 className="text-2xl my-12">Внесите свои данные:</h1>
+        <h1 className="text-2xl my-12 text-center uppercase">Внесите свои данные</h1>
         <form className="flex flex-col justify-between items-center mb-12">
           <TextField
+            value={value.age}
             onChange={changeParameters}
             label="Ваш возраст"
             type="number"
@@ -22,6 +23,7 @@ const ThirdStep = ({ value, toggleSteps, changeParameters }: ThirdStepProps): JS
             sx={{ m: 1, width: "100%" }}
           />
           <TextField
+            value={value.growth}
             onChange={changeParameters}
             label="Ваш рост"
             type="number"
@@ -32,6 +34,7 @@ const ThirdStep = ({ value, toggleSteps, changeParameters }: ThirdStepProps): JS
             }}
           />
           <TextField
+            value={value.weight}
             onChange={changeParameters}
             label="Ваш вес"
             type="number"
@@ -43,7 +46,7 @@ const ThirdStep = ({ value, toggleSteps, changeParameters }: ThirdStepProps): JS
           />
         </form>
       </div>
-      {value.age.length > 0 && value.weight.length > 0 && value.growth.length > 0 ? (
+      {Number(value.age) > 0 && Number(value.weight) > 0 && Number(value.growth) > 0 ? (
         <Button onClick={() => toggleSteps("third")} sx={{ marginBottom: "60px" }} variant="contained">
           Продолжить
         </Button>

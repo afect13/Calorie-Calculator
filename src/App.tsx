@@ -1,12 +1,14 @@
-import FirstStep from "./components/steps/FirstStep";
 import { useState } from "react";
-import SecondStep from "./components/steps/SecondStep";
-import ThirdStep from "./components/steps/ThirdStep";
+import FirstStep from "./components/Steps/FirstStep";
+import SecondStep from "./components/Steps/SecondStep";
+import ThirdStep from "./components/Steps/ThirdStep";
+import Result from "./components/Result/Result";
 
 type IInitialSteps = {
   first: boolean;
   second: boolean;
   third: boolean;
+  result: boolean;
 };
 
 type IInitialParameters = {
@@ -20,6 +22,7 @@ const App = (): JSX.Element => {
     first: true,
     second: false,
     third: false,
+    result: false,
   };
   const initialParameters: IInitialParameters = {
     age: "",
@@ -39,13 +42,31 @@ const App = (): JSX.Element => {
     }
     if (step.third === true) {
       if (event.target.id === "age") {
-        setParameters((prevState) => ({ ...prevState, age: event.target.value }));
+        if (
+          !["e", "E", "+", "-", "."].includes(event.target.value) &&
+          Number(event.target.value) >= 0 &&
+          Number(event.target.value) < 110
+        ) {
+          setParameters((prevState) => ({ ...prevState, age: event.target.value }));
+        }
       }
       if (event.target.id === "growth") {
-        setParameters((prevState) => ({ ...prevState, growth: event.target.value }));
+        if (
+          !["e", "E", "+", "-", "."].includes(event.target.value) &&
+          Number(event.target.value) >= 0 &&
+          Number(event.target.value) < 300
+        ) {
+          setParameters((prevState) => ({ ...prevState, growth: event.target.value }));
+        }
       }
       if (event.target.id === "weight") {
-        setParameters((prevState) => ({ ...prevState, weight: event.target.value }));
+        if (
+          !["e", "E", "+", "-", "."].includes(event.target.value) &&
+          Number(event.target.value) >= 0 &&
+          Number(event.target.value) < 600
+        ) {
+          setParameters((prevState) => ({ ...prevState, weight: event.target.value }));
+        }
       }
     }
   };
@@ -57,7 +78,13 @@ const App = (): JSX.Element => {
       setStep((prevState: IInitialSteps) => ({ ...prevState, second: false, third: true }));
     }
     if (stepNum === "third") {
-      setStep((prevState: IInitialSteps) => ({ ...prevState, third: false, first: true }));
+      setStep((prevState: IInitialSteps) => ({ ...prevState, third: false, result: true }));
+    }
+    if (stepNum === "result") {
+      setStep((prevState: IInitialSteps) => ({ ...prevState, result: false, first: true }));
+      setGender("male");
+      setActivity("1.200");
+      setParameters({ ...initialParameters });
     }
   };
   return (
@@ -71,8 +98,15 @@ const App = (): JSX.Element => {
       {step.third === true && (
         <ThirdStep value={parameters} changeParameters={handleChangeInput} toggleSteps={handleToggleSteps} />
       )}
+      {step.result === true && (
+        <Result gender={gender} activity={activity} parameters={parameters} toggleSteps={handleToggleSteps} />
+      )}
     </div>
   );
 };
 
 export default App;
+
+//  Менять динамически цвет на ИМТ (когда в норме зеленый)
+//  Понять как считать скорость похудения и исправить
+//  Вынести типы в отдельные файлы

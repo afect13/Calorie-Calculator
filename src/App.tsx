@@ -42,13 +42,31 @@ const App = (): JSX.Element => {
     }
     if (step.third === true) {
       if (event.target.id === "age") {
-        setParameters((prevState) => ({ ...prevState, age: event.target.value }));
+        if (
+          !["e", "E", "+", "-", "."].includes(event.target.value) &&
+          Number(event.target.value) >= 0 &&
+          Number(event.target.value) < 110
+        ) {
+          setParameters((prevState) => ({ ...prevState, age: event.target.value }));
+        }
       }
       if (event.target.id === "growth") {
-        setParameters((prevState) => ({ ...prevState, growth: event.target.value }));
+        if (
+          !["e", "E", "+", "-", "."].includes(event.target.value) &&
+          Number(event.target.value) >= 0 &&
+          Number(event.target.value) < 300
+        ) {
+          setParameters((prevState) => ({ ...prevState, growth: event.target.value }));
+        }
       }
       if (event.target.id === "weight") {
-        setParameters((prevState) => ({ ...prevState, weight: event.target.value }));
+        if (
+          !["e", "E", "+", "-", "."].includes(event.target.value) &&
+          Number(event.target.value) >= 0 &&
+          Number(event.target.value) < 600
+        ) {
+          setParameters((prevState) => ({ ...prevState, weight: event.target.value }));
+        }
       }
     }
   };
@@ -64,6 +82,9 @@ const App = (): JSX.Element => {
     }
     if (stepNum === "result") {
       setStep((prevState: IInitialSteps) => ({ ...prevState, result: false, first: true }));
+      setGender("male");
+      setActivity("1.200");
+      setParameters({ ...initialParameters });
     }
   };
   return (
@@ -85,3 +106,7 @@ const App = (): JSX.Element => {
 };
 
 export default App;
+
+//  Менять динамически цвет на ИМТ (когда в норме зеленый)
+//  Понять как считать скорость похудения и исправить
+//  Вынести типы в отдельные файлы

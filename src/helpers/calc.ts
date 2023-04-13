@@ -3,6 +3,11 @@ type IResult = {
   activityMetabolic: number;
   bodyMassIndex: number;
   defecit: { [key: string]: number };
+  diagram: {
+    basal: number[];
+    digestion: number[];
+    rest: number[];
+  };
 };
 
 const calc = (
@@ -24,9 +29,11 @@ const calc = (
       15: 0,
       20: 0,
     },
-    // diagram: {
-    // Расчитать для диаграммы basalMetabolic синий расход на еду 10% остальное в зеленый
-    // }
+    diagram: {
+      basal: [],
+      digestion: [],
+      rest: [],
+    },
   };
   if (gender === "male") {
     result.basalMetabolic = Math.trunc(
@@ -43,7 +50,15 @@ const calc = (
   Object.keys(result.defecit).forEach((def: string) => {
     result.defecit[def] = result.activityMetabolic - (result.activityMetabolic * Number(def)) / 100;
   });
-  console.log(result);
+  result.diagram.basal.push(result.basalMetabolic);
+  result.diagram.basal.push((result.basalMetabolic * 100) / result.activityMetabolic);
+  result.diagram.digestion.push((result.activityMetabolic * 10) / 100);
+  result.diagram.digestion.push((((result.activityMetabolic * 10) / 100) * 100) / result.activityMetabolic);
+  result.diagram.rest.push(result.activityMetabolic - result.basalMetabolic - result.diagram.digestion[0]);
+  result.diagram.rest.push(
+    ((result.activityMetabolic - result.basalMetabolic - result.diagram.digestion[0]) * 100) / result.activityMetabolic
+  );
+  return result;
 };
 
 export default calc;

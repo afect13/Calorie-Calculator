@@ -1,8 +1,6 @@
-type DefecitTableProps = {
-  defecit: { [key: string]: number };
-};
+import { DeficitTableProps } from "./DeficitTable.props";
 
-const DefecitTable = ({ defecit, ...props }: DefecitTableProps) => {
+const DeficitTable = ({ defecit, ...props }: DeficitTableProps) => {
   return (
     <div className="mb-6">
       <table className="border-collapse border text-center  bg-white  shadow-xl  border-slate-400 text-xs">
@@ -56,4 +54,4 @@ const DefecitTable = ({ defecit, ...props }: DefecitTableProps) => {
   );
 };
 
-export default DefecitTable;
+export default DeficitTable;

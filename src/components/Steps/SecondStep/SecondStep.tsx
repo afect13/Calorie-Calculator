@@ -4,11 +4,7 @@ import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
 import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
-type SecondStepProps = {
-  value: string;
-  toggleSteps: (stepNum: string) => void;
-  changeActivity: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+import { SecondStepProps } from "./SecondStep.props";
 
 const SecondStep = ({ value, toggleSteps, changeActivity }: SecondStepProps): JSX.Element => {
   return (

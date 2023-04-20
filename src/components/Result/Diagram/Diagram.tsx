@@ -1,10 +1,4 @@
-type DiagramProps = {
-  diagram: {
-    basal: number[];
-    digestion: number[];
-    rest: number[];
-  };
-};
+import { DiagramProps } from "./Diagram.props";
 
 const Diagram = ({ diagram, ...props }: DiagramProps) => {
   return (

@@ -1,12 +1,7 @@
 import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
 import Button from "@mui/material/Button";
-
-type FirstStepProps = {
-  value: string;
-  changeGender: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  toggleSteps: (stepNum: string) => void;
-};
+import { FirstStepProps } from "./FirstStep.props";
 
 const FirstStep = ({ value, changeGender, toggleSteps }: FirstStepProps): JSX.Element => {
   return (

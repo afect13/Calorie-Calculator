@@ -1,38 +1,15 @@
+import { IInitialSteps, initialParameters, initialSteps } from "./initialData/initialData";
 import { useState } from "react";
-import FirstStep from "./components/Steps/FirstStep";
-import SecondStep from "./components/Steps/SecondStep";
-import ThirdStep from "./components/Steps/ThirdStep";
+import FirstStep from "./components/Steps/FirstStep/FirstStep";
+import SecondStep from "./components/Steps/SecondStep/SecondStep";
+import ThirdStep from "./components/Steps/ThirdStep/ThirdStep";
 import Result from "./components/Result/Result";
 
-type IInitialSteps = {
-  first: boolean;
-  second: boolean;
-  third: boolean;
-  result: boolean;
-};
-
-type IInitialParameters = {
-  age: string;
-  growth: string;
-  weight: string;
-};
-
 const App = (): JSX.Element => {
-  const initialSteps: IInitialSteps = {
-    first: true,
-    second: false,
-    third: false,
-    result: false,
-  };
-  const initialParameters: IInitialParameters = {
-    age: "",
-    growth: "",
-    weight: "",
-  };
   const [gender, setGender] = useState("male");
   const [activity, setActivity] = useState("1.200");
-  const [parameters, setParameters] = useState({ ...initialParameters });
-  const [step, setStep] = useState({ ...initialSteps });
+  const [parameters, setParameters] = useState(initialParameters);
+  const [step, setStep] = useState(initialSteps);
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (step.first === true) {
       setGender((event.target as HTMLInputElement).value);
@@ -107,6 +84,4 @@ const App = (): JSX.Element => {
 
 export default App;
 
-//  Менять динамически цвет на ИМТ (когда в норме зеленый)
 //  Понять как считать скорость похудения и исправить
-//  Вынести типы в отдельные файлы

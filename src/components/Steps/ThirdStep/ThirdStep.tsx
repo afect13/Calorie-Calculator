@@ -1,12 +1,7 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-
-type ThirdStepProps = {
-  value: { age: string; growth: string; weight: string };
-  changeParameters: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
-  toggleSteps: (stepNum: string) => void;
-};
+import { ThirdStepProps } from "./ThirdStep.props";
 
 const ThirdStep = ({ value, toggleSteps, changeParameters }: ThirdStepProps): JSX.Element => {
   return (

@@ -1,7 +1,4 @@
-type MetobolismTableProps = {
-  base: number;
-  activ: number;
-};
+import { MetobolismTableProps } from "./MetobolismTable.props";
 
 const MetobolismTable = ({ base, activ, ...props }: MetobolismTableProps) => {
   return (

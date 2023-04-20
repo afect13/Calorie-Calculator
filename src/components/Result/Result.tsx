@@ -1,32 +1,10 @@
 import { Button } from "@mui/material";
-import Diagram from "../Diagram";
-import MetobolismTable from "../MetobolismTable";
-import DefecitTable from "../DefecitTable";
-import BodyMassIndex from "../BodyMassIndex";
+import Diagram from "./Diagram/Diagram";
+import MetobolismTable from "./MetobolismTable/MetobolismTable";
+import DefecitTable from "./DeficitTable/DeficitTable";
+import BodyMassIndex from "./BodyMassIndex/BodyMassIndex";
 import calc from "../../helpers/calc";
-
-type ResultProps = {
-  gender: string;
-  activity: string;
-  parameters: {
-    age: string;
-    growth: string;
-    weight: string;
-  };
-  toggleSteps: (stepNum: string) => void;
-};
-
-type IResult = {
-  basalMetabolic: number;
-  activityMetabolic: number;
-  bodyMassIndex: number;
-  defecit: { [key: string]: number };
-  diagram: {
-    basal: number[];
-    digestion: number[];
-    rest: number[];
-  };
-};
+import { IResult, ResultProps } from "./Result.props";
 
 const Result = ({ gender, activity, parameters, toggleSteps }: ResultProps): JSX.Element => {
   const result: IResult = calc(gender, activity, parameters);

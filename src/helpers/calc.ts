@@ -2,7 +2,7 @@ type IResult = {
   basalMetabolic: number;
   activityMetabolic: number;
   bodyMassIndex: number;
-  defecit: { [key: string]: number };
+  defecit: { [key: string]: { [key: string]: number } };
   diagram: {
     basal: number[];
     digestion: number[];
@@ -24,10 +24,10 @@ const calc = (
     activityMetabolic: 0,
     bodyMassIndex: 0,
     defecit: {
-      5: 0,
-      10: 0,
-      15: 0,
-      20: 0,
+      5: { kkal: 0, weightLoss: 0 },
+      10: { kkal: 0, weightLoss: 0 },
+      15: { kkal: 0, weightLoss: 0 },
+      20: { kkal: 0, weightLoss: 0 },
     },
     diagram: {
       basal: [],
@@ -48,7 +48,9 @@ const calc = (
   result.activityMetabolic = Math.trunc(result.basalMetabolic * Number(activity));
   result.bodyMassIndex = Number(parameters.weight) / Math.pow(Number(parameters.growth) / 100, 2);
   Object.keys(result.defecit).forEach((def: string) => {
-    result.defecit[def] = result.activityMetabolic - (result.activityMetabolic * Number(def)) / 100;
+    result.defecit[def].kkal = result.activityMetabolic - (result.activityMetabolic * Number(def)) / 100;
+    result.defecit[def].weightLoss =
+      Math.round((result.activityMetabolic - result.defecit[def].kkal) * 30 * 0.00014285714285714 * 10) / 10;
   });
   result.diagram.basal.push(result.basalMetabolic);
   result.diagram.basal.push((result.basalMetabolic * 100) / result.activityMetabolic);

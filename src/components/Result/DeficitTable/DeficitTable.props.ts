@@ -1,3 +1,3 @@
 export type DeficitTableProps = {
-  defecit: { [key: string]: number };
+  defecit: { [key: string]: { [key: string]: number } };
 };

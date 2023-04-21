@@ -13,7 +13,7 @@ export type IResult = {
   basalMetabolic: number;
   activityMetabolic: number;
   bodyMassIndex: number;
-  defecit: { [key: string]: number };
+  defecit: { [key: string]: { [key: string]: number } };
   diagram: {
     basal: number[];
     digestion: number[];

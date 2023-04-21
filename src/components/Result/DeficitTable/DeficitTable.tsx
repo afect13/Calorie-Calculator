@@ -16,17 +16,17 @@ const DeficitTable = ({ defecit, ...props }: DeficitTableProps) => {
           <tr>
             <td className="border border-slate-300 py-2">5%</td>
             <td className="border border-slate-300 py-2" {...props}>
-              {defecit[5]}
+              {defecit[5].kkal}
             </td>
-            <td className="border border-slate-300 py-2">0.4 кг/месяц</td>
+            <td className="border border-slate-300 py-2">{defecit[5].weightLoss + " кг/месяц"}</td>
             <td className="border border-slate-300 px-2 py-2 text-zinc-400 text-left">Очень медленное похудение</td>
           </tr>
           <tr>
             <td className="border border-slate-300 py-2">10%</td>
             <td className="border border-slate-300 py-2" {...props}>
-              {defecit[10]}
+              {defecit[10].kkal}
             </td>
-            <td className="border border-slate-300 py-2">0.8 кг/месяц</td>
+            <td className="border border-slate-300 py-2">{defecit[10].weightLoss + " кг/месяц"}</td>
             <td rowSpan={2} className="border border-slate-300 px-2 py-2 text-green-400 text-left">
               Оптимальный уровень дефицита
             </td>
@@ -34,16 +34,16 @@ const DeficitTable = ({ defecit, ...props }: DeficitTableProps) => {
           <tr>
             <td className="border border-slate-300 py-2">15%</td>
             <td className="border border-slate-300 py-2" {...props}>
-              {defecit[15]}
+              {defecit[15].kkal}
             </td>
-            <td className="border border-slate-300 py-2">1.2 кг/месяц</td>
+            <td className="border border-slate-300 py-2">{defecit[15].weightLoss + " кг/месяц"}</td>
           </tr>
           <tr>
             <td className="border border-slate-300 py-2">20%</td>
             <td className="border border-slate-300 py-2" {...props}>
-              {defecit[20]}
+              {defecit[20].kkal}
             </td>
-            <td className="border border-slate-300 py-2">1.6 кг/месяц</td>
+            <td className="border border-slate-300 py-2">{defecit[20].weightLoss + " кг/месяц"}</td>
             <td className="border border-slate-300 py-2 text-red-400 px-2 text-left">
               Более высокий дефицит чреват растройствами нервной системы, срывами и в итоге низкой общей эффекивностью
             </td>

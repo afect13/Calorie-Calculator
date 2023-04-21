@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Calorie-Calculator/static/css/main.fc07a023.css",
-    "main.js": "/Calorie-Calculator/static/js/main.80ed056b.js",
+    "main.css": "/Calorie-Calculator/static/css/main.5da83484.css",
+    "main.js": "/Calorie-Calculator/static/js/main.4b49a71c.js",
     "index.html": "/Calorie-Calculator/index.html",
-    "main.fc07a023.css.map": "/Calorie-Calculator/static/css/main.fc07a023.css.map",
-    "main.80ed056b.js.map": "/Calorie-Calculator/static/js/main.80ed056b.js.map"
+    "main.5da83484.css.map": "/Calorie-Calculator/static/css/main.5da83484.css.map",
+    "main.4b49a71c.js.map": "/Calorie-Calculator/static/js/main.4b49a71c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc07a023.css",
-    "static/js/main.80ed056b.js"
+    "static/css/main.5da83484.css",
+    "static/js/main.4b49a71c.js"
   ]
 }

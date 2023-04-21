@@ -83,5 +83,3 @@ const App = (): JSX.Element => {
 };
 
 export default App;
-
-//  Понять как считать скорость похудения и исправить

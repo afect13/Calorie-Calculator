@@ -23,3 +23,4 @@ $ npm install
 $ npm run start
 ```
 
+ [DEMO](https://afect13.github.io/Calorie-Calculator/)
